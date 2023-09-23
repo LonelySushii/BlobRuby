@@ -20,7 +20,7 @@ public class Healthcollect : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        rubycontroller controller = other.GetComponent<rubycontroller>();
+        BlobController controller = other.GetComponent<BlobController>();
 
         if (controller != null)
         {
