@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class MainCamera : MonoBehaviour
 {
-   public void PlayGame()
+    public void PlayGame()
    {
     SceneManager.LoadSceneAsync(1);
    }

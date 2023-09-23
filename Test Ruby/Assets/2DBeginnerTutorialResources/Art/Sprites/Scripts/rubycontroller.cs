@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class rubycontroller : MonoBehaviour
 {
@@ -9,13 +10,17 @@ public class rubycontroller : MonoBehaviour
     public int maxHealth = 5;
     
     public GameObject projectilePrefab;
+    public GameObject postprocessing;
+    public GameObject[] abilityicons;
+   
 
     public AudioClip throwSound;
     public AudioClip hitSound;
     
     public int health { get { return currentHealth; }}
     int currentHealth;
-    
+    private int currentemyeaten;
+
     public float timeInvincible = 2.0f;
     bool isInvincible;
     bool isMoving;
@@ -26,6 +31,7 @@ public class rubycontroller : MonoBehaviour
     float vertical;
     
     Animator animator;
+    public Animator cameraanim;
     Vector2 lookDirection = new Vector2(1,0);
 
     AudioSource audioSource;
@@ -99,15 +105,31 @@ public class rubycontroller : MonoBehaviour
         }
     }
 
+
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.CompareTag("enemy"))
         {
             animator.SetTrigger("Eating");
             Destroy(collision.gameObject);
+            if(currentemyeaten < abilityicons.Length)
+            abilityicons[currentemyeaten].SetActive(true);
+            
+            currentemyeaten++;
+            if (currentemyeaten == 1)
+                postprocessing.SetActive(true);
+
+
+            cameraanim.Play("camerazoom");
             Debug.Log("Eating");
         }
     }
+
+    
+
+
+
 
     public void ChangeHealth(int amount)
     {
