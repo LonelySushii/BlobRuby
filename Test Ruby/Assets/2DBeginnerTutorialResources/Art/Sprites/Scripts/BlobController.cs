@@ -10,6 +10,8 @@ public class BlobController : MonoBehaviour
     public int maxHealth = 5;
     
     public GameObject projectilePrefab;
+    public GameObject area1Col;
+    public GameObject area2Col;
     //public GameObject postprocessing;
     public GameObject[] abilityicons;
     public Animator postProcessAnim;
@@ -21,7 +23,7 @@ public class BlobController : MonoBehaviour
     public int health { get { return currentHealth; }}
     int currentHealth;
     private int currentemyeaten;
-    private int currBlobAnimIndex;
+    [SerializeField] private int currBlobAnimIndex;
 
     public float timeInvincible = 2.0f;
     bool isInvincible;
@@ -46,7 +48,7 @@ public class BlobController : MonoBehaviour
         
         currentHealth = maxHealth;
         isMoving = true;
-
+        currBlobAnimIndex = 1;
         audioSource = GetComponent<AudioSource>();
     }
 
@@ -119,6 +121,13 @@ public class BlobController : MonoBehaviour
                 abilityicons[currentemyeaten].SetActive(true);
             currentemyeaten++;
             //postprocessing.SetActive(true);
+
+            if (currentemyeaten == 1)
+                area1Col.SetActive(false);
+
+            if (currentemyeaten == 2)
+                area2Col.SetActive(false);
+
             cameraanim.Play("camerazoom");
             Debug.Log("Eating");
         }
@@ -178,8 +187,10 @@ public class BlobController : MonoBehaviour
     {
         if (currBlobAnimIndex < blobCharacterAnim.Length)
         {
+            
             rubyAnim.runtimeAnimatorController = blobCharacterAnim[currBlobAnimIndex];
-            currBlobAnimIndex++;
+currBlobAnimIndex++;
         }
+        
     }
 }

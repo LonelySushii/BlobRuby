@@ -21,15 +21,15 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: -1619923462, guid: 4a0cdafd30461f34499c04d7e56a38bc, type: 3}
+      value: {fileID: 280161037, guid: 86d1f7630826c0149996670fb1cbfa84, type: 3}
     - time: 0.16666667
-      value: {fileID: -632322571, guid: 4a0cdafd30461f34499c04d7e56a38bc, type: 3}
+      value: {fileID: 1369201931, guid: 86d1f7630826c0149996670fb1cbfa84, type: 3}
     - time: 0.33333334
-      value: {fileID: -1065864083, guid: 4a0cdafd30461f34499c04d7e56a38bc, type: 3}
+      value: {fileID: -1347980162, guid: 86d1f7630826c0149996670fb1cbfa84, type: 3}
     - time: 0.5
-      value: {fileID: 1387609272, guid: 4a0cdafd30461f34499c04d7e56a38bc, type: 3}
+      value: {fileID: 115703131, guid: 86d1f7630826c0149996670fb1cbfa84, type: 3}
     - time: 0.6666667
-      value: {fileID: 414788563, guid: 4a0cdafd30461f34499c04d7e56a38bc, type: 3}
+      value: {fileID: 946921103, guid: 86d1f7630826c0149996670fb1cbfa84, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -52,11 +52,11 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: -1619923462, guid: 4a0cdafd30461f34499c04d7e56a38bc, type: 3}
-    - {fileID: -632322571, guid: 4a0cdafd30461f34499c04d7e56a38bc, type: 3}
-    - {fileID: -1065864083, guid: 4a0cdafd30461f34499c04d7e56a38bc, type: 3}
-    - {fileID: 1387609272, guid: 4a0cdafd30461f34499c04d7e56a38bc, type: 3}
-    - {fileID: 414788563, guid: 4a0cdafd30461f34499c04d7e56a38bc, type: 3}
+    - {fileID: 280161037, guid: 86d1f7630826c0149996670fb1cbfa84, type: 3}
+    - {fileID: 1369201931, guid: 86d1f7630826c0149996670fb1cbfa84, type: 3}
+    - {fileID: -1347980162, guid: 86d1f7630826c0149996670fb1cbfa84, type: 3}
+    - {fileID: 115703131, guid: 86d1f7630826c0149996670fb1cbfa84, type: 3}
+    - {fileID: 946921103, guid: 86d1f7630826c0149996670fb1cbfa84, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
