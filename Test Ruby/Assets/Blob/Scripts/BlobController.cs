@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Burst.CompilerServices;
 using UnityEngine;
 
 public class BlobController : MonoBehaviour
@@ -8,6 +9,7 @@ public class BlobController : MonoBehaviour
     public int maxHealth = 5;
 
     public GameObject projectilePrefab;
+    public GameObject interactGameObject;
     public GameObject area1Col;
     public GameObject area2Col;
     public GameObject area3Col;
@@ -17,8 +19,10 @@ public class BlobController : MonoBehaviour
     public Animator postProcessAnim;
     public RuntimeAnimatorController[] blobCharacterAnim;
 
+    public AudioSource musicAud;
     public AudioClip throwSound;
     public AudioClip hitSound;
+    private AudioSource audioSource;
 
     public int Health { get { return currentHealth; } }
     private int currentHealth;
@@ -39,7 +43,7 @@ public class BlobController : MonoBehaviour
     private Animator rubyAnim;
     private Vector2 lookDirection = new Vector2(1, 0);
 
-    private AudioSource audioSource;
+    private Collider2D _col2D;
 
     void Start()
     {
@@ -83,17 +87,23 @@ public class BlobController : MonoBehaviour
             Launch();
         }
 
-        if (Input.GetKeyDown(KeyCode.X))
+        //if (Input.GetKeyDown(KeyCode.X))
+        //{
+        //    RaycastHit2D hit = Physics2D.Raycast(rigidbody2d.position + Vector2.up * 0.2f, lookDirection, 1.5f, LayerMask.GetMask("NPC"));
+        //    if (hit.collider != null)
+        //    {
+        //        NonPlayerCharacter character = hit.collider.GetComponent<NonPlayerCharacter>();
+        //        if (character != null)
+        //        {
+        //            character.DisplayDialog();
+        //        }
+        //    }
+        //}
+
+        if (_col2D != null && Input.GetKeyDown(KeyCode.X))
         {
-            RaycastHit2D hit = Physics2D.Raycast(rigidbody2d.position + Vector2.up * 0.2f, lookDirection, 1.5f, LayerMask.GetMask("NPC"));
-            if (hit.collider != null)
-            {
-                NonPlayerCharacter character = hit.collider.GetComponent<NonPlayerCharacter>();
-                if (character != null)
-                {
-                    character.DisplayDialog();
-                }
-            }
+            if (_col2D.GetComponent<NonPlayerCharacter>() != null)
+                _col2D.GetComponent<NonPlayerCharacter>().DisplayDialog();
         }
     }
 
@@ -108,7 +118,7 @@ public class BlobController : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("enemy"))
         {
@@ -123,7 +133,10 @@ public class BlobController : MonoBehaviour
                 area1Col.SetActive(false);
 
             if (currentemyeaten == 2)
+            {
                 area2Col.SetActive(false);
+                musicAud.mute = false;
+            }
 
             if (currentemyeaten == 3)
                 area3Col.SetActive(false);
@@ -133,6 +146,21 @@ public class BlobController : MonoBehaviour
 
             cameraanim.Play("camerazoom");
             Debug.Log("Eating");
+        }
+
+        if (collision.CompareTag("NPC") && currentemyeaten >= 3)
+        {
+            interactGameObject.SetActive(true);
+            _col2D = collision;
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("NPC"))
+        {
+            interactGameObject.SetActive(false);
+            _col2D = null;
         }
     }
 
