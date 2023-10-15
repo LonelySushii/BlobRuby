@@ -22,52 +22,52 @@ AnimationClip:
     curve:
     - time: 0
       value: {fileID: -23766868, guid: 118db8332591d294599d6351c968803d, type: 3}
-    - time: 0.16666667
+    - time: 0.14285715
       value: {fileID: -1298067828, guid: 118db8332591d294599d6351c968803d, type: 3}
-    - time: 0.33333334
+    - time: 0.2857143
       value: {fileID: -23766868, guid: 118db8332591d294599d6351c968803d, type: 3}
-    - time: 0.5
+    - time: 0.42857143
       value: {fileID: -1650169431, guid: 4e290643a42873a4f83a6c5d3d7f9f9d, type: 3}
-    - time: 0.6666667
+    - time: 0.5714286
       value: {fileID: -96819948, guid: 4e290643a42873a4f83a6c5d3d7f9f9d, type: 3}
-    - time: 0.8333333
+    - time: 0.71428573
       value: {fileID: -1638053670, guid: 4e290643a42873a4f83a6c5d3d7f9f9d, type: 3}
-    - time: 1
+    - time: 0.85714287
       value: {fileID: 721393720, guid: 4e290643a42873a4f83a6c5d3d7f9f9d, type: 3}
-    - time: 1.1666666
+    - time: 1
       value: {fileID: 1616484584, guid: 4e290643a42873a4f83a6c5d3d7f9f9d, type: 3}
-    - time: 1.3333334
+    - time: 1.1428572
       value: {fileID: 1102771560, guid: 4e290643a42873a4f83a6c5d3d7f9f9d, type: 3}
-    - time: 1.5
+    - time: 1.2857143
       value: {fileID: -1714855391, guid: 4e290643a42873a4f83a6c5d3d7f9f9d, type: 3}
-    - time: 1.6666666
+    - time: 1.4285715
       value: {fileID: -782865849, guid: 4e290643a42873a4f83a6c5d3d7f9f9d, type: 3}
-    - time: 1.8333334
+    - time: 1.5714285
       value: {fileID: 567532101, guid: 4e290643a42873a4f83a6c5d3d7f9f9d, type: 3}
-    - time: 2
+    - time: 1.7142857
       value: {fileID: -975223901, guid: 4e290643a42873a4f83a6c5d3d7f9f9d, type: 3}
-    - time: 2.1666667
+    - time: 1.8571428
       value: {fileID: -1057506011, guid: 4e290643a42873a4f83a6c5d3d7f9f9d, type: 3}
-    - time: 2.3333333
+    - time: 2
       value: {fileID: -1942921696, guid: 4e290643a42873a4f83a6c5d3d7f9f9d, type: 3}
-    - time: 2.5
+    - time: 2.142857
       value: {fileID: -1301255546, guid: 4e290643a42873a4f83a6c5d3d7f9f9d, type: 3}
-    - time: 2.6666667
+    - time: 2.2857144
       value: {fileID: 326606450, guid: 4e290643a42873a4f83a6c5d3d7f9f9d, type: 3}
-    - time: 2.8333333
+    - time: 2.4285715
       value: {fileID: 326606450, guid: 4e290643a42873a4f83a6c5d3d7f9f9d, type: 3}
-    - time: 3
+    - time: 2.5714285
       value: {fileID: 326606450, guid: 4e290643a42873a4f83a6c5d3d7f9f9d, type: 3}
-    - time: 3.1666667
+    - time: 2.7142856
       value: {fileID: 326606450, guid: 4e290643a42873a4f83a6c5d3d7f9f9d, type: 3}
-    - time: 3.3333333
+    - time: 2.857143
       value: {fileID: 326606450, guid: 4e290643a42873a4f83a6c5d3d7f9f9d, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
     script: {fileID: 0}
     flags: 2
-  m_SampleRate: 6
+  m_SampleRate: 7
   m_WrapMode: 0
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
@@ -110,7 +110,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 3.5
+    m_StopTime: 3
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -137,14 +137,14 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 2.3333333
+  - time: 2.142857
     functionName: UnFreezeRuby
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 3.1666667
+  - time: 2.2857144
     functionName: SwitchCharacter
     data: 
     objectReferenceParameter: {fileID: 0}
