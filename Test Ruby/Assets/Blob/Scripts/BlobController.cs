@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Burst.CompilerServices;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class BlobController : MonoBehaviour
 {
@@ -10,16 +11,15 @@ public class BlobController : MonoBehaviour
 
     public GameObject projectilePrefab;
     public GameObject interactGameObject;
+    public GameObject portalGameObject;
     public GameObject area1Col;
     public GameObject area2Col;
     public GameObject area3Col;
     public GameObject area4Col;
-    //public GameObject postprocessing;
     public GameObject[] abilityicons;
-    public Animator postProcessAnim;
-    public RuntimeAnimatorController[] blobCharacterAnim;
 
     public AudioSource musicAud;
+    public AudioClip eatSound;
     public AudioClip throwSound;
     public AudioClip hitSound;
     private AudioSource audioSource;
@@ -27,7 +27,7 @@ public class BlobController : MonoBehaviour
     public int Health { get { return currentHealth; } }
     private int currentHealth;
     private int currentemyeaten;
-    [SerializeField] private int currBlobAnimIndex;
+    private int currBlobAnimIndex;
 
     public float timeInvincible = 2.0f;
     private bool isInvincible;
@@ -38,9 +38,12 @@ public class BlobController : MonoBehaviour
     private float horizontal;
     private float vertical;
 
+    public PlayableDirector outroTimeline;
+    public Animator postProcessAnim;
+    public RuntimeAnimatorController[] blobCharacterAnim;
     public Animator cameraanim;
-    public Animator fadeBG = default;
-    private Animator rubyAnim;
+    public Animator fadeBG;
+    private Animator blobAnim;
     private Vector2 lookDirection = new Vector2(1, 0);
 
     private Collider2D _col2D;
@@ -48,7 +51,7 @@ public class BlobController : MonoBehaviour
     void Start()
     {
         rigidbody2d = GetComponent<Rigidbody2D>();
-        rubyAnim = GetComponent<Animator>();
+        blobAnim = GetComponent<Animator>();
 
         currentHealth = maxHealth;
         isMoving = true;
@@ -71,9 +74,12 @@ public class BlobController : MonoBehaviour
             lookDirection.Normalize();
         }
 
-        rubyAnim.SetFloat("Look X", lookDirection.x);
-        rubyAnim.SetFloat("Look Y", lookDirection.y);
-        rubyAnim.SetFloat("Speed", move.magnitude);
+        if (isMoving)
+        {
+            blobAnim.SetFloat("Look X", lookDirection.x);
+            blobAnim.SetFloat("Look Y", lookDirection.y);
+            blobAnim.SetFloat("Speed", move.magnitude);
+        }
 
         if (isInvincible)
         {
@@ -82,10 +88,10 @@ public class BlobController : MonoBehaviour
                 isInvincible = false;
         }
 
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            Launch();
-        }
+        //if (Input.GetKeyDown(KeyCode.C))
+        //{
+        //    Launch();
+        //}
 
         //if (Input.GetKeyDown(KeyCode.X))
         //{
@@ -123,11 +129,12 @@ public class BlobController : MonoBehaviour
         if (collision.CompareTag("enemy"))
         {
             Destroy(collision.gameObject);
-            rubyAnim.SetTrigger("Eating");
+            blobAnim.SetTrigger("Eating");
             if (currentemyeaten < abilityicons.Length)
                 abilityicons[currentemyeaten].SetActive(true);
 
             currentemyeaten++;
+            Playsound(eatSound);
 
             if (currentemyeaten == 1)
                 area1Col.SetActive(false);
@@ -144,6 +151,12 @@ public class BlobController : MonoBehaviour
             if (currentemyeaten == 4)
                 area4Col.SetActive(false);
 
+            if (currentemyeaten == 5)
+            {
+                portalGameObject.SetActive(true);
+                outroTimeline.Play();
+            }
+
             cameraanim.Play("camerazoom");
             Debug.Log("Eating");
         }
@@ -153,6 +166,9 @@ public class BlobController : MonoBehaviour
             interactGameObject.SetActive(true);
             _col2D = collision;
         }
+
+        if (collision.CompareTag("Finish"))
+            StartCoroutine(EndGameDelay());
     }
 
     void OnTriggerExit2D(Collider2D collision)
@@ -188,7 +204,7 @@ public class BlobController : MonoBehaviour
         Projectile projectile = projectileObject.GetComponent<Projectile>();
         projectile.Launch(lookDirection, 300);
 
-        rubyAnim.SetTrigger("Launch");
+        blobAnim.SetTrigger("Launch");
 
         Playsound(throwSound);
     }
@@ -201,6 +217,9 @@ public class BlobController : MonoBehaviour
     public void FreezeRuby()
     {
         isMoving = false;
+        blobAnim.SetFloat("Look X", 0);
+        blobAnim.SetFloat("Look Y", 0);
+        blobAnim.SetFloat("Speed", 0);
     }
 
     public void UnFreezeRuby()
@@ -218,11 +237,18 @@ public class BlobController : MonoBehaviour
     {
         //if (currBlobAnimIndex < blobCharacterAnim.Length)
         //{
-        rubyAnim.runtimeAnimatorController = blobCharacterAnim[currBlobAnimIndex];
+        blobAnim.runtimeAnimatorController = blobCharacterAnim[currBlobAnimIndex];
         Debug.Log("Switching Anim Controllers");
         //}
 
         currBlobAnimIndex++;
         Debug.Log("Updating currBlobAnimIndex");
+    }
+
+    IEnumerator EndGameDelay()
+    {
+        fadeBG.Play("Fade_Out");
+        yield return new WaitForSeconds(0.5f);
+        Application.LoadLevel(0);
     }
 }
