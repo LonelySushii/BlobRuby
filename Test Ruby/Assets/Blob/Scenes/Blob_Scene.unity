@@ -6583,8 +6583,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 3.399, y: 8.6365, z: 0}
-    m_Extent: {x: 8.1769, y: 12.2883005, z: 0}
+    m_Center: {x: 3.397, y: 8.623, z: 0}
+    m_Extent: {x: 8.1825, y: 12.2911005, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -6924,8 +6924,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 3.3952498, y: 8.6249, z: 0}
-    m_Extent: {x: 8.1713505, y: 12.2925005, z: 0}
+    m_Center: {x: 3.3900502, y: 8.63095, z: 0}
+    m_Extent: {x: 8.17755, y: 12.285649, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -13016,8 +13016,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 3.3986502, y: 8.62895, z: 0}
-    m_Extent: {x: 8.18445, y: 12.2893505, z: 0}
+    m_Center: {x: 3.3973498, y: 8.6346, z: 0}
+    m_Extent: {x: 8.176849, y: 12.2859, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -18084,7 +18084,7 @@ PrefabInstance:
       objectReference: {fileID: 1448571446}
     - target: {fileID: 2352199518351516299, guid: 2a83bf69d4e09eb4e884c4972cfcd634, type: 3}
       propertyPath: speed
-      value: 3
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2352199518351516299, guid: 2a83bf69d4e09eb4e884c4972cfcd634, type: 3}
       propertyPath: fadeBG
@@ -18241,6 +18241,10 @@ PrefabInstance:
     - target: {fileID: 7097896268456222023, guid: 2a83bf69d4e09eb4e884c4972cfcd634, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
       value: 5.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7907589806274191889, guid: 2a83bf69d4e09eb4e884c4972cfcd634, type: 3}
+      propertyPath: m_Constraints
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8492260958276223255, guid: 2a83bf69d4e09eb4e884c4972cfcd634, type: 3}
       propertyPath: m_Sprite
